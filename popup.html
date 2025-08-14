@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Amazon Order Hider</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="container">
+    <header><h1 id="i18n-title">🛒 Amazon Order Hider</h1></header>
+
+    <div class="input-section">
+      <label for="order-number" id="i18n-label-order">Enter order number:</label>
+      <input id="order-number" type="text" placeholder="e.g. 123-4567890-1234567" autocomplete="off" />
+      <button id="hide-order" class="btn-primary"><span class="icon">🔒</span> <span id="i18n-btn-hide">Hide</span></button>
+    </div>
+
+    <div class="hidden-orders-section">
+      <h2 id="i18n-hidden-orders">Hidden orders</h2>
+      <div id="hidden-orders-list">
+        <p class="empty-state" id="i18n-empty">No hidden orders</p>
+      </div>
+    </div>
+
+    <!-- Button-Leiste -->
+    <div class="actions">
+      <button id="clear-all" class="btn-danger"><span class="icon">🗑️</span> <span id="i18n-btn-showall">Show all</span></button>
+      <button id="import-list" class="btn-secondary"><span class="icon">📥</span> <span id="i18n-btn-import">Import</span></button>
+      <button id="export-list" class="btn-secondary"><span class="icon">💾</span> <span id="i18n-btn-export">Export</span></button>
+    </div>
+
+    <!-- Hinweis UNTER den drei Buttons (außerhalb .actions) -->
+    <p id="i18n-import-note" class="import-note" style="margin:8px 0 0;color:#6c757d; text-align: center;"> </p>
+    <br> </div> 
+
+    <!-- Auto-Hide Rules -->
+    <div class="input-section" style="border-top:1px solid #dee2e6">
+      <h2 id="i18n-rules-title" style="margin-bottom:10px;">Auto‑Hide rules</h2>
+      <label for="rule-text" id="i18n-rule-label">Hide if product title contains:</label>
+      <input id="rule-text" type="text" placeholder="e.g. gift, subscription, refill" autocomplete="off" />
+      <div style="display:flex;gap:10px;align-items:center;margin-bottom:12px">
+        <label style="display:flex;align-items:center;gap:8px">
+          <input id="rule-regex" type="checkbox" />
+          <span id="i18n-rule-regex">Use RegExp</span>
+           <small id="i18n-rule-help" style="color:#6c757d">Example: ^gift.*prime$</small>
+        </label>
+       
+      </div>
+      <button id="add-rule" class="btn-primary"><span class="icon">➕</span> <span id="i18n-rule-add">Add rule</span></button>
+
+      <div class="hidden-orders-section" style="max-height:180px;margin-top:12px">
+        <h2 id="i18n-rules-list">Rules</h2>
+        <div id="rules-list"><p class="empty-state" id="i18n-rules-empty">No rules yet</p></div>
+      </div>
+    </div>
+
+    <footer><p>OSFE® (Open source for everyone)</p></footer>
+  </div>
+
+  <!-- vorhandener Picker bleibt unverändert -->
+  <input id="file-picker" type="file" accept="application/json,.json" style="display:none" />
+  <script src="popup.js"></script>
+</body>
+</html>
